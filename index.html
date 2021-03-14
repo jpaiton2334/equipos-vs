@@ -1,29 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Premier League</title>
   <link rel="stylesheet" href="css/estilos.css">
 </head>
 
-  <body>
+  <body > 
     <div class="contenedor">
       <img src="" alt="" id="img1" />
       <p id="nombre"></p>
+      <button id="btn1" class="btn btn-primary" >lefth</button>
+      <button id="btn2"  class="btn btn-primary">rigth</button>
+   
+   
+   
+     
+
       <p id="versus">VS</p>
       <img src="" alt="" id="img2" />
       <p id="nombre2"></p>
+      <button id="btn3"  class="btn btn-primary" >lefth</button> 
+      <button id="btn4"  class="btn btn-primary">right</button>
     </div>
+
+  
+  
+
     <script>
       let image = document.querySelector("#img1");
       let nombre = document.querySelector("#nombre");
       let image2 = document.querySelector("#img2");
       let nombre2 = document.querySelector("#nombre2");
+      
 
       function equipo1(logo,nombreEquipo){
         image.setAttribute("src",logo);
         nombre.innerHTML = nombreEquipo;
+        
+       
+        
       }
       function equipo2(logo,nombreEquipo){
         image2.setAttribute("src",logo);
@@ -31,20 +49,61 @@
       }
       
       let key = "2c6e53892b4fd81a84173e6497aecc629135c4a2003d6dd8ba8edf90a02f0d3a";
-      function mostrarEquipos(idEquipo,fucionEquipo){
+      function mostrarEquipos(idEquipo,funcionEquipo){
 
       fetch(`https://allsportsapi.com/api/football/?&met=Teams&teamId=${idEquipo}&APIkey=${key}`)
       .then(response =>response.json())
       .then((equipos) => {
-        fucionEquipo(
+        funcionEquipo(
         equipos.result[0].team_logo,
         equipos.result[0].team_name)
       });
       }
       
-      mostrarEquipos(2627,equipo1);
+      mostrarEquipos(2616,equipo1);
       
-      mostrarEquipos(2621,equipo2);
+      mostrarEquipos(2627,equipo2);
+    
+     
+let boton = document.getElementById("btn1");
+let boton2 = document.getElementById("btn2");
+let boton3 = document.getElementById("btn3");
+let boton4 = document.getElementById("btn4");
+
+boton.addEventListener("click", btn1);
+boton2.addEventListener("click", btn2);
+boton3.addEventListener("click", btn3 );
+boton4.addEventListener("click", btn4);
+function btn1() {
+   
+      mostrarEquipos(2621,equipo1);
+     
+    
+
+}
+function btn2() {
+
+mostrarEquipos(2616,equipo1);
+ 
+
+}
+
+function btn3() {
+
+mostrarEquipos(2618,equipo2);
+
+}
+
+function btn4() {
+
+mostrarEquipos(2627,equipo2);
+
+}
+function change(){
+document.getElementById("bd").style.backgroundImage="url(futbol.jpg)";
+}
+
 
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 </html>
